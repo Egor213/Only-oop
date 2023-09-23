@@ -1,0 +1,18 @@
+OBJ = main.o hero.o controller.o
+
+all: start
+
+start: $(OBJ)
+	g++ $(OBJ)
+
+main.o: main.cpp
+	g++ -c main.cpp
+
+hero.o: hero.cpp
+	g++ -c hero.cpp
+
+controller.o: controller.cpp
+	g++ -c controller.cpp
+
+clean:
+	rm -rf *.o start
