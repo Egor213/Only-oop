@@ -8,8 +8,8 @@ class Hero{
 
 
 public:
-    Hero(std::string name, unsigned heal_points, unsigned mana_capacity, unsigned attack);
-    Hero(std::string name, unsigned heal_points, unsigned mana_capacity, unsigned attack, unsigned experience);
+    Hero() = default;
+    Hero(std::string name, unsigned heal_points, unsigned attack, unsigned experience = 0);
     
 
 
@@ -19,27 +19,22 @@ public:
 
     //getters
     unsigned getHP();
-    unsigned getMC();
     unsigned getATK();
     std::string getName();
     unsigned getEXP();
-    unsigned getSP();
+  
     
 
     //setters
-    bool setHP(unsigned heal_points);
-    bool setMC(unsigned mana_capacity);
-    bool setATK(unsigned attack);
+    bool setHP(unsigned);
+    bool setATK(unsigned);
     void setName(std::string name);
-    bool setEXP(unsigned experience);
-    bool setSP(unsigned star_points);
+    bool setEXP(unsigned);
 
 
 private:
-    unsigned experience;
-    unsigned star_points;   
+    unsigned experience; 
     unsigned heal_points;
-    unsigned mana_capacity;
     unsigned attack;
     std::string name;
     bool check_stat(int stat, int number1, int number2);
