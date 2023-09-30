@@ -1,32 +1,35 @@
-#ifndef move_h
-#define move_h
+#ifndef controller_h
+#define controller_h
 #include "hero.h"
-
-typedef struct Point{
-    int x;
-    int y;
-}Point;
+#include "point.h"
+#include "field.h"
 
 class Controller{
 
 public:
     enum Side {Up, Down, Rigth, Left, Stay};
-    Controller(Hero& hero, int x, int y);
+    Controller(Hero& hero, Field& field, int x, int y);
 
-    void move(Side side);
+    
+    
     
 
-    //getters
-    Point getPosition();
-
-    //setters
-    bool setPosition(int x, int y);
-
+    
 private:
     Hero& hero;
+    Field& field;
     Point position;
+    
     bool check_position(int x, int y);
-    bool step(Point& position, Side side);
+    bool step(Side);
+    //getters
+    Point get_position();
+    //setters
+    bool set_position(int x, int y);
+    void addHP(int);
+    void addEXP(int);
+    void addATK(int);
+    
 };
 
 
