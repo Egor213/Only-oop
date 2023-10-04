@@ -4,33 +4,32 @@
 #include "point.h"
 #include "field.h"
 
-class Controller{
+class Controller
+{
 
 public:
-    enum Side {Up, Down, Rigth, Left, Stay};
-    Controller(Hero& hero, Field& field, int x, int y);
+    enum Side
+    {
+        Up,
+        Down,
+        Rigth,
+        Left,
+        Stay
+    };
+    Controller(Hero &hero, Field &field, unsigned x, unsigned y);
 
-    
-    
-    
-
-    
 private:
-    Hero& hero;
-    Field& field;
+    Hero &hero;
+    Field &field;
     Point position;
-    
-    bool check_position(int x, int y);
+
+    bool checkPosition(unsigned x, unsigned y) const;
     bool step(Side);
-    //getters
-    Point get_position();
-    //setters
-    bool set_position(int x, int y);
+    Point getPosition() const;
+    bool setPosition(unsigned x, unsigned y);
     void addHP(int);
     void addEXP(int);
     void addATK(int);
-    
 };
-
 
 #endif

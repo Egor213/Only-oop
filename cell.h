@@ -2,23 +2,16 @@
 #define cell_h
 #include <iostream>
 
-class Cell{
+class Cell
+{
 
 public:
-    Cell(bool passability = 1);
-    ~Cell();
+    Cell(bool passability = true);
     void setPassability(bool passability);
-    bool getPassability();
-    int* get_event();
-    void set_event(int* event);
+    bool getPassability() const;
+
 private:
     bool passability;
-    //в будущем тут будет указатель на интерфеис события
-    int* event = nullptr;
-};  
-
-
-
-
+};
 
 #endif

@@ -2,38 +2,38 @@
 #define controller_cpp
 #include "controller.h"
 
-
-
-Controller::Controller(Hero& hero, Field& field, int x, int y) : hero(hero),  field(field), position(x,y){
-    if (!check_position(x, y))
-        ERROR_VALUE;
+Controller::Controller(Hero &hero, Field &field, unsigned x, unsigned y) : hero(hero), field(field), position(x, y)
+{
+    if (!checkPosition(x, y))
+        this->position = {0, 0};
 }
 
-
-bool Controller::check_position(int x, int y){
-    if (x < 0 || x > field.get_width() || y < 0 || y > field.get_height())
+bool Controller::checkPosition(unsigned x, unsigned y) const
+{
+    if (x > field.getWidth() || y > field.getHeight())
         return false;
     return true;
 }
 
-Point Controller::get_position(){
+Point Controller::getPosition() const
+{
     return position;
 }
 
-
-
-bool Controller::set_position(int x, int y){
-    if (check_position(x, y) && !field.array_cells[x][y].getPassability()){
+bool Controller::setPosition(unsigned x, unsigned y)
+{
+    if (checkPosition(x, y) && !field.getCell(x, y).getPassability())
+    {
         this->position = {x, y};
         return true;
     }
     return false;
 }
 
-
-bool Controller::step(Side side){
-    int new_position_y = get_position().y;
-    int new_position_x = get_position().x;
+bool Controller::step(Side side)
+{
+    int new_position_y = getPosition().y;
+    int new_position_x = getPosition().x;
     switch (side)
     {
     case Up:
@@ -49,24 +49,24 @@ bool Controller::step(Side side){
         new_position_x--;
         break;
     }
-    if (!set_position(new_position_x, new_position_y)){
-        std::cerr << "Перемещение на данную клетку невозможно!" << '\n';
+    if (!setPosition(new_position_x, new_position_y))
+    {
         return false;
     }
     return true;
 }
 
-
-void Controller::addATK(int atk){
+void Controller::addATK(int atk)
+{
     hero.setATK(hero.getATK() + atk);
 }
-void Controller::addHP(int hp){
+void Controller::addHP(int hp)
+{
     hero.setHP(hero.getHP() + hp);
 }
-void Controller::addEXP(int exp){
+void Controller::addEXP(int exp)
+{
     hero.setEXP(hero.getATK() + exp);
 }
-
-
 
 #endif
