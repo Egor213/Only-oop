@@ -2,12 +2,6 @@
 #define point_cpp
 #include "point.h"
 
-
-Point::Point(int x, int y){
-    this->x = x;
-    this->y = y;
-}
-
-
+Point::Point(unsigned x, unsigned y) : x(x), y(y) {}
 
 #endif

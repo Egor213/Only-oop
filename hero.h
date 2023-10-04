@@ -2,45 +2,27 @@
 #define hero_h
 #include <string>
 #include <iostream>
-#define ERROR_VALUE throw std::out_of_range("Недопустимое значение переменной!")
-
-class Hero{
-
+#include <algorithm>
+class Hero
+{
 
 public:
     Hero() = default;
-    Hero(std::string name, unsigned heal_points, unsigned attack, unsigned experience = 0);
-    
-
-
-
-    void getInformation();
-
-
-    //getters
-    unsigned getHP();
-    unsigned getATK();
-    std::string getName();
-    unsigned getEXP();
-  
-    
-
-    //setters
-    bool setHP(unsigned);
-    bool setATK(unsigned);
+    Hero(std::string name, int heal_points, int attack, int experience = 0);
+    unsigned getHP() const;
+    unsigned getATK() const;
+    std::string getName() const;
+    unsigned getEXP() const;
+    void setHP(int);
+    void setATK(int);
     void setName(std::string name);
-    bool setEXP(unsigned);
-
+    void setEXP(int);
 
 private:
-    unsigned experience; 
+    unsigned experience;
     unsigned heal_points;
     unsigned attack;
     std::string name;
-    bool check_stat(int stat, int number1, int number2);
-     
 };
-
-
 
 #endif
