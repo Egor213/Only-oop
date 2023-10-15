@@ -6,6 +6,7 @@
 #include "../Events/teleportEvent.h"
 #include "../controller.h"
 #include "../Events/kill.h"
+#include "../Events/debuffEvent.h"
 class GenField
 {
 public:
@@ -16,7 +17,9 @@ private:
     Field& field;
     Controller& controller;
     void generateFieldLv1();
+    void generateFieldLv2();
     void placeEventLv1();
+    void placeEventLv2();
 
 };
 

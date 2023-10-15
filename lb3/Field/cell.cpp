@@ -31,6 +31,10 @@ void Cell::setPassability(bool passability)
 
 void Cell::setEvent(GameEvent *event)
 {
+    if (this->event != nullptr)
+    {
+        delete this->event;
+    }
     this->event = event;
 }
 

@@ -32,6 +32,7 @@ private:
     unsigned height;
     void initField(unsigned width, unsigned height);
     void swaps(Field& first, Field& second);
+    void delField(unsigned width);
 };
 
 #endif

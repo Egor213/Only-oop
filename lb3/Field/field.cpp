@@ -50,13 +50,8 @@ Field &Field::operator=(Field &&other)
 
 Field::~Field()
 {
-    for (int i = 0; i < width; ++i)
-    {
-        delete[] arr_cells[i];
-    }
-    delete[] arr_cells;
+    delField(width);
 }
-
 
 bool Field::setExit(Point end)
 {
@@ -101,8 +96,7 @@ Cell &Field::getCell(unsigned x, unsigned y)
     return arr_cells[x][y];
 }
 
-
-void Field::swaps(Field& first, Field& second)
+void Field::swaps(Field &first, Field &second)
 {
     std::swap(first.start, second.start);
     std::swap(first.exit, second.exit);
@@ -120,11 +114,21 @@ void Field::initField(unsigned width, unsigned height)
     }
 }
 
-void Field::setSize(unsigned height, unsigned width)
+void Field::delField(unsigned width)
 {
-    this->width = std::clamp(width, MIN_SIZE_FIELD, MAX_SIZE_FIELD);
-    this->height = std::clamp(height, MIN_SIZE_FIELD, MAX_SIZE_FIELD);
+    for (int i = 0; i < width; ++i)
+    {
+        delete[] arr_cells[i];
+    }
+    delete[] arr_cells;
 }
 
+void Field::setSize(unsigned height, unsigned width)
+{
+    delField(this->width);
+    this->width = std::clamp(width, MIN_SIZE_FIELD, MAX_SIZE_FIELD);
+    this->height = std::clamp(height, MIN_SIZE_FIELD, MAX_SIZE_FIELD);
+    initField(this->width, this->height);
+}
 
 #endif

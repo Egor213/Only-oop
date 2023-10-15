@@ -10,13 +10,15 @@
 int main(void)
 {
     Hero mob(1, 0, 4);
-    Field field(15, 15);
+    Field field;
     Controller cont(mob, field, 2, 1);
     View view(field, cont);
-    for (int i = 1; i < 6; i++)
-        field.getCell(i, 3).setPassability(false);
-    GenField a(field, cont);
-    field.setExit({0, 9});
+
+    GenField a(field, cont, 1);
+    std::cout << "\n";
+    field.setExit({11, 17});
+    view.printField();
+    /* field.setExit({0, 9});
     field.setStart({14, 13});
     field.getCell(2, 1).setView('@');
     std::cout << "\n";
@@ -29,7 +31,7 @@ int main(void)
     
     std::cout << "\n";
     view.printField();
-    std::cout << "\n";
+    std::cout << "\n"; */
 
     return 0;
 }
