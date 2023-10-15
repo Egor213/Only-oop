@@ -11,4 +11,9 @@ void KillEvent::event()
               << "HP установленов 0\n";
 }
 
+KillEvent* KillEvent::clone()
+{
+    return new KillEvent(*this);
+}
+
 #endif

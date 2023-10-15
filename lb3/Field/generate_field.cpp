@@ -21,7 +21,7 @@ GenField::GenField(Field &field, Controller &controller, unsigned level) : field
     else
     {
         generateFieldLv2();
-       // placeEventLv2();
+        placeEventLv2();
     }
 }
 

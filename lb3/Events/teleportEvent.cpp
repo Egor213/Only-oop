@@ -22,4 +22,9 @@ void TeleportEvent::event()
 
 }
 
+TeleportEvent* TeleportEvent::clone()
+{
+    return new TeleportEvent(*this);
+}
+
 #endif

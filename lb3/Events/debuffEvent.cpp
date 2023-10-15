@@ -12,5 +12,9 @@ void DebuffEvent::event()
               << "ATK уменьшено на 1\n"
               << "HP уменьшено на 5\n";
 }
+DebuffEvent* DebuffEvent::clone()
+{
+    return new DebuffEvent(*this);
+}
 
 #endif

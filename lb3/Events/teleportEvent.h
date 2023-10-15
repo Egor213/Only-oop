@@ -8,6 +8,7 @@ class TeleportEvent : public GameEvent
 {
 public:
     TeleportEvent(Controller &controller);
+    TeleportEvent* clone() override;
     void event() override;
 
 private:

@@ -15,4 +15,9 @@ void BuffEvent::event()
               << "EXP увеличено на 100\n";
 }
 
+BuffEvent* BuffEvent::clone()
+{
+    return new BuffEvent(*this);
+}
+
 #endif

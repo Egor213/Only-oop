@@ -4,10 +4,11 @@ all: start
 
 start: $(OBJ)
 	g++ $(OBJ)
-	
+	rm -rf *.o start
 
 main.o: main.cpp
 	g++ -c main.cpp
+	
 
 hero.o: hero.cpp
 	g++ -c hero.cpp

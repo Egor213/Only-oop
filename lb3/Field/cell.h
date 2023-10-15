@@ -7,6 +7,8 @@ class Cell
 public:
     Cell(bool passability = true);
     ~Cell();
+    Cell(const Cell& other);
+    Cell& operator=(const Cell& other);
     void setPassability(bool passability);
     bool getPassability() const;
     char getView() const;

@@ -37,7 +37,6 @@ Field &Field::operator=(const Field &other)
 
 Field::Field(Field &&other) : width(0), height(0), arr_cells(nullptr)
 {
-    std::cout << "move" << '\n';
     swaps(*this, other);
 }
 

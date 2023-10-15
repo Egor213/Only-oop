@@ -6,6 +6,7 @@ class DebuffEvent : public GameEvent
 {
 public:
     DebuffEvent(Controller& controller);
+    DebuffEvent* clone() override;
     void event() override;
     
 private:

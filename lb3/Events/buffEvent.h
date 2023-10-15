@@ -6,7 +6,9 @@ class BuffEvent : public GameEvent
 {
 public:
     BuffEvent(Controller& controller);
+    BuffEvent* clone() override;
     void event() override;
+    
     
 private:
     Controller& controller;

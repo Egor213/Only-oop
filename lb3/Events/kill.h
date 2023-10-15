@@ -7,6 +7,7 @@ class KillEvent : public GameEvent
 {
 public:
     KillEvent(Controller &controller);
+    KillEvent* clone() override;
     void event() override;
 
 private:

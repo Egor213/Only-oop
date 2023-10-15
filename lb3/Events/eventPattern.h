@@ -6,6 +6,7 @@ class GameEvent
 {
 public:
     virtual void event() = 0;
+    virtual GameEvent* clone() = 0;
     virtual ~GameEvent(){};
 };
 

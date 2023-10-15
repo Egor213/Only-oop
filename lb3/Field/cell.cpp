@@ -48,4 +48,23 @@ void Cell::callEvent()
     event->event();
 }
 
+Cell::Cell(const Cell &other) : passability(other.passability), view(other.view), event(nullptr)
+{
+    if (other.event != nullptr)
+    {
+        event = other.event->clone();
+    }
+}
+
+Cell &Cell::operator=(const Cell &other)
+{
+    Cell temp(other);
+    std::swap(passability, temp.passability);
+    std::swap(view, temp.view);
+    std::swap(event, temp.event);
+    return *this;
+}
+
+
+
 #endif
