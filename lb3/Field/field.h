@@ -11,10 +11,10 @@ public:
 
     Field(unsigned height = 15, unsigned width = 15);
     Field(const Field& other);
-    Field& operator=(const Field& other);
     Field(Field&& other);
-    Field& operator=(Field&& other);
     ~Field();
+    Field& operator=(const Field& other);
+    Field& operator=(Field&& other);
     Point getStart() const;
     Point getExit() const;
     bool setStart(Point start);
