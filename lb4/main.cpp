@@ -12,17 +12,29 @@
 #include <vector>
 #include <string>
 #include "Managment/management.h"
+#include <chrono>
+#include <thread>
 int main(void)
 {
-    Game game;
-    game.initGame(10, 2, 1);
-    while(1)
+    Game game(10, 2);
+    game.initGame();
+    
+     while(1)
     {
         system("clear");
         game.view();
-        game.step();
+        if (!game.getFlagFile())
+        {
+            game.stepConsole();
+        }
+        else
+        {
+            game.stepFile();
+            std::this_thread::sleep_for(std::chrono::seconds(1));
+        }
+            
+        
     }
-    
-    
+
     return 0;
 }

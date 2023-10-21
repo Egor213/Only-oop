@@ -6,25 +6,36 @@
 #include "../Field/generate_field.h"
 #include "../Game/view.h"
 #include "../Managment/commands.h"
-#include "../Managment/user_commands.h"
+#include <iostream>
+//#include "../Managment/user_commands.h"
 class Game
 {
 public:
-    Game();
+    Game(unsigned hp, unsigned atk);
     ~Game();
-    void initGame(unsigned hp, unsigned atk, unsigned level);
+    void initGame(bool restart_flag = false);
     void view() const;
-    void step();
+    void stepConsole();
+    void stepFile();
+    bool getFlagFile();
 private:
     Field *field;
     Controller *controller;
-    Management *management;
-    InputCommand *com;
+    Management management;
     Hero *hero;
-    bool flag_run;
+    std::map<Command, char> key_map;
+    std::map<Command, Side> command_map;
+    std::vector<Command> arr_commands;
+    Command getKeyByValue(const std::map<Command, char> &key_map, const char &value);
     unsigned level;
+    bool flag_file;
     void cleanPtr();
     bool isEnd();
+    void stepCommand();
+    void finishGame();
+    unsigned hp;
+    unsigned atk;
+    int counter_file_command = 0;
 };
 
 #endif

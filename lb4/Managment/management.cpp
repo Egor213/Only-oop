@@ -65,7 +65,7 @@ Command Management::stringToCommand(const std::string &command)
     }
 }
 
-std::string Management::getKeyByValue(const std::map<std::string, Command> &commands_map, const Command &value)
+std::string Management::getKeyByValue(const std::map<std::string, Command> &commands_map, const Command &value) const
 {
     for (const auto &pair : commands_map)
     {
@@ -77,7 +77,7 @@ std::string Management::getKeyByValue(const std::map<std::string, Command> &comm
     throw std::out_of_range("Значение не найдено");
 }
 
-void Management::control_scheme()
+void Management::control_scheme() const
 {
     for (const auto &pair : key_map)
     {
@@ -92,10 +92,35 @@ void Management::checkKeyMap(const char value)
     {
         if (pair.second == value)
         {
-            throw std::runtime_error("Вы ввели 2 одинаковых значения к разным коммандам!");
+            throw std::runtime_error("Неверные значение клавишь у комманд!");
         }
     }
 }
 
+std::vector<Command> Management::commandFile(const std::string &file_name)
+{
+    ReadFile file(file_name);
+    lines = file.read();
+    std::vector<Command> arr_commands;
+    std::string temp;
+    std::string command;
+    std::istringstream iss(lines[0]);
+    iss >> temp;
+    while (true)
+    {
+        if(!iss)
+            break;
+        iss >> command;
+        arr_commands.push_back(stringToCommand(command));
+    }
+    for (auto pair : arr_commands)
+    {
+        if (pair == Command::Invalid)
+        {
+            throw std::runtime_error("Неверная команда в файле!");
+        }
+    }
+    return arr_commands;
+}
 
 #endif

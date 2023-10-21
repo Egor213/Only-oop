@@ -2,10 +2,8 @@
 #define controller_cpp
 #include "controller.h"
 
-Controller::Controller(Hero &hero, Field &field, unsigned x, unsigned y) : hero(hero), field(field), position(x, y)
+Controller::Controller(Hero &hero, Field &field) : hero(hero), field(field), position({0, 0})
 {
-    if (!checkPosition(x, y))
-        this->position = {0, 0};
 }
 
 bool Controller::checkPosition(unsigned x, unsigned y) const
@@ -22,19 +20,21 @@ Point Controller::getPosition() const
     return position;
 }
 
-
 bool Controller::setPosition(unsigned x, unsigned y)
 {
+    char temp = field.getCell(getPosition().x, getPosition().y).getView();
     field.getCell(getPosition().x, getPosition().y).setView(' ');
     if (checkPosition(x, y) && field.getCell(x, y).getPassability())
-    {   
+    {
+        if (temp != '@')
+            field.getCell(getPosition().x, getPosition().y).setView(temp);
         this->position = {x, y};
         field.getCell(x, y).setView('@');
         checkEvent(x, y);
-        
+
         return true;
     }
-    field.getCell(getPosition().x, getPosition().y).setView('@');
+    field.getCell(getPosition().x, getPosition().y).setView(temp);
     return false;
 }
 

@@ -9,14 +9,13 @@ class Controller
 {
 
 public:
-    Controller(Hero &hero, Field &field, unsigned x, unsigned y);
+    Controller(Hero &hero, Field &field);
     unsigned getStat(Stat stat) const;
     void addStat(Stat stat, int value);
     unsigned getWidth();
     unsigned getHeight();
     bool setPosition(unsigned x, unsigned y);
     Point getPosition() const;
-    //временно так или нет
     bool step(Side);
 private:
     Hero &hero;
