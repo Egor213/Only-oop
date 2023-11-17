@@ -17,6 +17,7 @@
 #include "Managment/set_file_management.h"
 #include "Managment/console_read.h"
 #include "Managment/management.h"
+#include "Managment/set_console_management.h"
 int main(void)
 {
     /* Game game(10, 2);
@@ -28,9 +29,10 @@ int main(void)
     game.setManage(&test);
     game.run(); */
    // ConsoleCommandRead pricolchick(test);
-    Management test;
+     Management test;
     Game game(10, 2);
     game.setManage(&test);
-    game.run();
+    game.run(); 
+
     return 0;
 }

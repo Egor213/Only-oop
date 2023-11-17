@@ -8,6 +8,8 @@
 #include "enum_setters.h"
 #include "console_read.h"
 #include "set_file_management.h"
+#include "set_console_management.h"
+#include "file_controle.h"
 
 #include <iostream>
 #include <map>

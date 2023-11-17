@@ -1,1 +1,10 @@
-Commands: MoveDown MoveDown MoveDown MoveLeft MoveLeft MoveLeft MoveDown MoveDown MoveRight MoveDown MoveRight MoveRight MoveUp MoveRight MoveRight MoveRight MoveRight MoveUp MoveUp
+s
+s
+s
+s
+a
+a
+a
+s
+s
+s

@@ -43,6 +43,8 @@ ISetManagement* Management::getSetters()
                 std::getline(std::cin, file_name); */
                 file_name = "Managment/rule.txt";
                 return new SetFileManagement(file_name);
+            case Setters::Console:
+                return new SetConsoleManagement;
             }
         }
         else
@@ -69,6 +71,8 @@ ICommandRead* Management::getReaders(ISetManagement* setter)
                 case Readers::Console:
                     std::cin.ignore(100, '\n');
                     return new ConsoleCommandRead(setter);
+                case Readers::File:
+                    return new FileCommandRead(setter, "Managment/commands.txt");
             }
 
         }
