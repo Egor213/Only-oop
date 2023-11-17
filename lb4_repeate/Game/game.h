@@ -8,7 +8,8 @@
 #include <iostream>
 #include <chrono>
 #include <thread>
-#include "../Managment/console_read.h"
+#include "../Managment/management.h"
+
 class Game
 {
 public:
@@ -16,7 +17,7 @@ public:
     ~Game();
 
     void run();
-    void setManage(ISetManagement *manage);
+    void setManage(Management *manage);
     
 
 private:
@@ -25,22 +26,20 @@ private:
 
     Field *field;
     Controller *controller;
-    ISetManagement *manage;
-    ICommandRead *reader;
+    Management* manage;
     Hero *hero;
     GenField *create;
 
-    std::map<Command, char> bind_command_map;
-    std::vector<Command> arr_commands;
+
     unsigned level;
-    bool flag_file;
+
     void cleanPtr();
     void isEnd();
     void checkCin(unsigned temp);
     void finishGame();
     unsigned hp;
     unsigned atk;
-    int counter_file_command;
+
     void getLvl();
 };
 

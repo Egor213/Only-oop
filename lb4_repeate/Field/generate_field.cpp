@@ -59,7 +59,7 @@ std::vector<std::string> GenField::parseFile(const std::string &file_name)
     iss >> temp_height >> width >> temp_width >> height;
     if (temp_width != "width:" || temp_height != "height:" || height < 3 || height > 100 || width < 3 || width > 100)
     {
-        throw std::runtime_error("Ошибка считывания");
+        throw std::runtime_error("Ошибка считывания игрового поля!");
     }
     arr_game.erase(arr_game.begin(), arr_game.begin() + 2);
     for (int i = 0; i < arr_game.size(); i++)
@@ -72,7 +72,7 @@ std::vector<std::string> GenField::parseFile(const std::string &file_name)
         }
         if (arr_game[i].length() != height || arr_game.size() != width)
         {
-            throw std::runtime_error("Ошибка считывания");
+            throw std::runtime_error("Ошибка считывания игрового поля!");
         }
     }
     return arr_game;

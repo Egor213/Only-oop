@@ -1,5 +1,5 @@
 MoveLeft: a
-MoveRight: b
+MoveRight: d
 MoveUp: w
 MoveDown: s
 Quit: p

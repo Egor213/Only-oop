@@ -9,6 +9,6 @@ enum class Command {
     Quit,
     Restart,
     Invalid
-};
+};  
 
 #endif

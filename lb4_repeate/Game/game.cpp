@@ -2,8 +2,7 @@
 #define game_cpp
 #include "game.h"
 
-Game::Game(unsigned hp, unsigned atk) : hp(hp), atk(atk), level(3), field(nullptr), controller(nullptr), hero(nullptr)
-{}
+Game::Game(unsigned hp, unsigned atk) : hp(hp), atk(atk), level(3), field(nullptr), controller(nullptr), hero(nullptr), manage(nullptr){}
 
 Game::~Game()
 {
@@ -13,8 +12,12 @@ Game::~Game()
 void Game::run()
 {
     initGame();
+    View view(*field, *controller); // НЕ ЗАБЫТЬ УДАЛИТЬ
     while (1)
     {
+        system("clear");// НЕ ЗАБЫТЬ УДАЛИТЬ 
+        view.printField();// НЕ ЗАБЫТЬ УДАЛИТЬ
+        
         stepCommand();
     }
 }
@@ -23,6 +26,7 @@ void Game::getLvl()
 {
     std::cout << "Введите номер уровень 0 или 1: ";
     std::cin >> this->level;
+    std::cin.ignore(100, '\n');
     checkCin(level);
 }
 
@@ -36,10 +40,9 @@ void Game::checkCin(unsigned temp)
     }
 }
 
-void Game::setManage(ISetManagement *manage)
+void Game::setManage(Management *manage)
 {
     this->manage = manage;
-    bind_command_map = manage->getKeyManagement();
 }
 
 void Game::initGame()
@@ -51,7 +54,6 @@ void Game::initGame()
     this->controller = new Controller(*hero, *field);
     create->generateEvents(*controller);
     controller->setPosition(field->getStart().x, field->getStart().y);
-    reader = new ConsoleCommandRead(manage);  // можно менять под условия (считывание из терминала)
 }
 
 void Game::cleanPtr()
@@ -59,19 +61,12 @@ void Game::cleanPtr()
     delete hero;
     delete controller;
     delete create;
-    delete reader;
 }
 
 void Game::isEnd()
 {
     if (hero->getStat(HP) <= 0)
     {
-        if (controller->getPosition() == field->getExit())
-            std::cout << "Поздравляем с победой!\n";
-        else
-            std::cout << "Игра закончена!\nВаше здоровье меньше нуля!\n";
-
-        std::cout << "Завершите программу - 0 или совершите рестарт - 1: ";
         int temp = 0;
         std::cin >> temp;
         checkCin(temp);
@@ -86,7 +81,7 @@ void Game::isEnd()
 
 void Game::stepCommand()
 {
-    Command it = reader->read();
+    Command it = manage->getCommand();
     switch (it)
     {
     case Command::Invalid:
@@ -102,7 +97,6 @@ void Game::stepCommand()
         break;
     default:
         controller->step(it);
-        std::cout << "x: " << controller->getPosition().x << "y: " << controller->getPosition().y << '\n';
         isEnd();
         break;
     }

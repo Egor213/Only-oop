@@ -1,4 +1,4 @@
-OBJ = bin/main.o bin/hero.o bin/controller.o bin/point.o bin/cell.o bin/field.o bin/view.o bin/buffEvent.o bin/debuffEvent.o bin/teleportEvent.o bin/generate_field.o bin/kill.o bin/game.o bin/read_file.o bin/setfilemanagement.o bin/console_read.o
+OBJ = bin/main.o bin/hero.o bin/controller.o bin/point.o bin/cell.o bin/field.o bin/view.o bin/buffEvent.o bin/debuffEvent.o bin/teleportEvent.o bin/generate_field.o bin/kill.o bin/game.o bin/read_file.o bin/set_file_management.o bin/console_read.o bin/management.o
 
 all: start
 
@@ -50,11 +50,14 @@ bin/game.o: Game/game.cpp
 bin/read_file.o: Managment/read_file.cpp
 	g++ -c Managment/read_file.cpp -o bin/read_file.o
 
-bin/setfilemanagement.o: Managment/setfilemanagement.cpp
-	g++ -c Managment/setfilemanagement.cpp -o bin/setfilemanagement.o
+bin/set_file_management.o: Managment/set_file_management.cpp
+	g++ -c Managment/set_file_management.cpp -o bin/set_file_management.o
 
 bin/console_read.o: Managment/console_read.cpp
 	g++ -c Managment/console_read.cpp -o bin/console_read.o
+
+bin/management.o: Managment/management.cpp
+	g++ -c Managment/management.cpp -o bin/management.o
 
 clean:
 	rm -rf bin/*.o start

@@ -12,7 +12,20 @@ void View::printField() const
     {
         for (int j = 0; j < field.getWidth(); j++)
         {
-            std::cout << field.getCell(j, i).getView();
+            
+            if (field.getCell(j, i).getPassability() == 1)
+            {
+                if (j == (controller.getPosition().x) && i == (controller.getPosition().y))
+                    std::cout << '@';
+                else
+                    std::cout << ' '; 
+            }
+            else
+            {
+                std::cout << '*';
+            }
+                
+            
         }
         std::cout << '\n';
     }

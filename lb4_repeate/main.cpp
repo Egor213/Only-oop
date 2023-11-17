@@ -14,20 +14,23 @@
 
 #include <chrono>
 #include <thread>
-#include "Managment/setfilemanagement.h"
+#include "Managment/set_file_management.h"
 #include "Managment/console_read.h"
+#include "Managment/management.h"
 int main(void)
 {
     /* Game game(10, 2);
     Management input;
     game.setManagement(&input);
     game.run(); */
-    SetFileManagement test("Managment/rule.txt");   
+    /* SetFileManagement test("Managment/rule.txt");   
+    Game game(10, 2);
+    game.setManage(&test);
+    game.run(); */
+   // ConsoleCommandRead pricolchick(test);
+    Management test;
     Game game(10, 2);
     game.setManage(&test);
     game.run();
-   // ConsoleCommandRead pricolchick(test);
-   
-    
     return 0;
 }

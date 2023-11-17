@@ -11,7 +11,6 @@ ConsoleCommandRead::ConsoleCommandRead(ISetManagement* manage) : manage(manage)
 Command ConsoleCommandRead::read()
 {
     char temp = getSymbol();
-    std::cout << '\n' << temp << '\n';
     return convert(temp);
 }
 
