@@ -1,6 +1,6 @@
 
 #include "Game/game.h"
-#include "View/view.h"
+#include "View/view_console.h"
 
 int main(void)
 {
@@ -16,7 +16,7 @@ int main(void)
      Management test;
     Game game(10, 2);
     game.setManage(&test);
-    View view(&game);
+    ViewConsole view(&game);
     game.run(); 
 
     return 0;

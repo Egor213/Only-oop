@@ -21,7 +21,7 @@ void Game::run()
 void Game::getLvl()
 {
     std::cout << "Введите номер уровень 0 или 1: ";
-    notify(ViewEvent::GetLvl);
+   // notify(ViewEvent::GetLvl);
     std::cin >> this->level;
     std::cin.ignore(100, '\n');
     checkCin(level);

@@ -13,7 +13,7 @@ OBJ = bin/main.o \
 	bin/set_console_management.o \
 	bin/file_controle.o \
 	bin/game_tracker.o \
-	bin/view.o \
+	bin/view_console.o \
 
 
 all: start
@@ -79,8 +79,8 @@ bin/file_controle.o: Managment/file_controle.cpp
 bin/game_tracker.o: View/game_tracker.cpp
 	g++ -c View/game_tracker.cpp -o bin/game_tracker.o
 
-bin/view.o: View/view.cpp
-	g++ -c View/view.cpp -o bin/view.o
+bin/view_console.o: View/view_console.cpp
+	g++ -c View/view_console.cpp -o bin/view_console.o
 
 clean:
 	rm -rf bin/*.o start

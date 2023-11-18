@@ -9,7 +9,7 @@
 #include <thread>
 #include "../Managment/management.h"
 #include "../View/subject.h"
-#include "../View/view.h"
+#include "../View/view_console.h"
 class Game: public Subject
 {
 public:
@@ -23,7 +23,7 @@ public:
     void removeObserver(Observer* observer) override;
     void notify(ViewEvent view_event) override;
 
-    friend class View;
+    friend class ViewConsole;
 
 private:
     void initGame();

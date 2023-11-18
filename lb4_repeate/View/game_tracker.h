@@ -4,21 +4,21 @@
 #include "observer.h"
 #include <iostream>
 #include "../Game/game.h"
-#include "view.h"
-
-class View;
+#include "view_console.h"
+#include "iview.h"
+class ViewConsole;
 class Game;
 
 class GameTracker: public Observer
 {
 
 public:
-    GameTracker(Game* game, View* view);
+    GameTracker(Game* game, IView* view);
     void update(ViewEvent view_event) override;
 
 private:
     Game* game;
-    View* view;
+    IView* view;
 
 };
 
