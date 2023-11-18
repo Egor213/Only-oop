@@ -20,6 +20,7 @@ public:
     Management();
     ~Management();
     Command getCommand();
+    std::map<Command, char> getBindKey();
 
 private:
     ISetManagement* setter;

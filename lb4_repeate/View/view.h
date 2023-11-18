@@ -16,6 +16,8 @@ public:
 private:
     Game* game;
     GameTracker* game_tracker;
+    void viewManage();
+    void viewField();
 
 };
 

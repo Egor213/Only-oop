@@ -8,6 +8,7 @@ class FileCommandRead: public ICommandRead
 public:
     FileCommandRead(ISetManagement* manage, const std::string& file_name);
     Command read();
+    std::map<Command, char> getBind();
 
 private:
     const std::string& file_name;

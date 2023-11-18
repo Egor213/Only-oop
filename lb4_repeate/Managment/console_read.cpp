@@ -14,6 +14,11 @@ Command ConsoleCommandRead::read()
     return convert(temp);
 }
 
+std::map<Command, char> ConsoleCommandRead::getBind()
+{
+    return bind_command_map;
+}
+
 
 char ConsoleCommandRead::getSymbol() const
 {

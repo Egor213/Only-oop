@@ -23,6 +23,10 @@ Command FileCommandRead::read()
     return temp;
 }
 
+std::map<Command, char> FileCommandRead::getBind()
+{
+    return bind_map;
+}
 
 Command FileCommandRead::getKeyByValue(char temp, std::map<Command, char> bind_map)
 {

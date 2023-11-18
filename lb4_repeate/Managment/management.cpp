@@ -81,3 +81,8 @@ Command Management::getCommand()
 {
     return reader->read();
 }
+
+std::map<Command, char> Management::getBindKey()
+{
+    return reader->getBind();
+}

@@ -13,7 +13,7 @@ class ConsoleCommandRead: public ICommandRead
 public:
     ConsoleCommandRead(ISetManagement* manage);
     Command read();
-
+    std::map<Command, char> getBind();
 
 private:
     ISetManagement* manage;
