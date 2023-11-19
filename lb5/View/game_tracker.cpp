@@ -1,39 +1,42 @@
 #include "game_tracker.h"
 
-
-GameTracker::GameTracker(Game* game, IView* view) : game(game), view(view)
+GameTracker::GameTracker(Game *game, IView *view) : game(game), view(view)
 {
     game->addObserver(this);
 }
 
 void GameTracker::update(ViewEvent view_event)
 {
-    switch (view_event)
-    {
-    case ViewEvent::ChooseLvl:
-        view->updateChooseLvl();
-        break;
-    
-    case ViewEvent::EndGameLessHp:
-        view->updateEndGameLessHp();
-        break;
-    
-    case ViewEvent::EndGame:
-        view->updateEndGame();
-        break;
+    std::map<ViewEvent, std::function<void(IView *)>> choose_map = {
+        {ViewEvent::ChooseLvl, [](IView *obj)
+         {
+             return obj->updateChooseLvl();
+         }},
+        {ViewEvent::EndGameLessHp, [](IView *obj)
+         {
+             return obj->updateEndGameLessHp();
+         }},
+        {ViewEvent::EndGame, [](IView *obj)
+         {
+             return obj->updateEndGame();
+         }},
+        {ViewEvent::Restart, [](IView *obj)
+         {
+             return obj->updateRestart();
+         }},
+        {ViewEvent::InvalidKey, [](IView *obj)
+         {
+             return obj->updateInvalideKey();
+         }},
+        {ViewEvent::InitGame, [](IView *obj)
+         {
+             return obj->update();
+         }},
+        {ViewEvent::ChangeCoords, [](IView *obj)
+         {
+             return obj->update();
+         }},
 
-    case ViewEvent::Restart:
-        view->updateRestart();
-        break;
-
-    case ViewEvent::InvalidKey:
-        view->updateInvalideKey();
-        break;
-
-    default:
-        view->update();
-        break;
-    }
-    
+    };
+    choose_map[view_event](view);
 }
-

@@ -106,11 +106,18 @@ void ViewConsole::viewHero()
 
 char ViewConsole::getCharEvent(GameEvent *event)
 {
-    std::string temp = typeid(*event).name();
+    std::unordered_map<std::size_t, char> choose_map = {
+        {typeid(BuffEvent).hash_code(), 'b'},
+        {typeid(DebuffEvent).hash_code(), 'd'},
+        {typeid(KillEvent).hash_code(), 'k'},
+        {typeid(TeleportEvent).hash_code(), 't'},
+    };
+    /* std::string temp = typeid(*event).name();
     for (char c : temp)
     {
         if (!std::isdigit(c))
             return c;
     }
-    return ' ';
+    return ' '; */
+    return choose_map[typeid(*event).hash_code()];
 }
