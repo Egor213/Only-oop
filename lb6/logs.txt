@@ -1,0 +1,6 @@
+Log: 0# Time: 20:54:23 Key: 0 Command: ChooseLvl 
+Log: 1# Time: 20:54:23 Height: 19 Width: 20 StartX: 14 StartY: 18 
+Log: 2# Time: 20:54:23 Key: s Command: MoveDown 
+Log: 3# Time: 20:54:24 Key: w Command: MoveUp 
+Log: 4# Time: 20:54:24 Key: a Command: MoveLeft 
+Log: 5# Time: 20:54:24 HealPoint: 10 Attack: 2 Experience: 0 
