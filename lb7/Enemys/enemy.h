@@ -29,7 +29,10 @@ public:
         new_coords.y += temp.second;
         if (field->getCell(new_coords.x, new_coords.y).getPassability() && new_coords.x < field->getWidth()-1 && new_coords.y < field->getHeight()-1 && new_coords.x > 0 && new_coords.y > 0)
         {
-            coords = new_coords;
+            if (controller->getPosition() == new_coords)
+                interaction();
+            else
+                coords = new_coords;
             return true;
         }
         return false;
@@ -39,7 +42,10 @@ public:
     {
         if (field->getCell(x, y).getPassability() && x < field->getWidth() && y < field->getHeight())
         {
-            coords = {x, y};
+            if (controller->getPosition().x == x && controller->getPosition().y == y)
+                interaction();
+            else
+                coords = {x, y};
             return true;
         }
         return false;
@@ -48,6 +54,17 @@ public:
     Point getCoords() const
     {
         return coords;
+    }
+
+
+    void attack()
+    {
+        controller->addStat(HP, -2);
+    }
+
+    Controller* getPlayerController()
+    {
+        return controller;
     }
 
 

@@ -14,6 +14,8 @@
 
 #include "../Enemys/move_random.h"
 #include "../Enemys/interaction_atk.h"
+#include "../Enemys/interaction_tolk.h"
+#include "../Enemys/move_direct.h"
 
 class GenField
 {
@@ -24,8 +26,8 @@ public:
     void generateEnemies(Controller* controller);
     Field* getField();
 
-    std::vector<Enemy<MoveRandom, InteractionATK>*> getEnemies();
-    
+    std::vector<Enemy<MoveRandom, InteractionATK>*> getRandomEnemies();
+    std::vector<Enemy<MoveDirect, InteractionTolk>*> getDirectEnemies();
 
 private:
     Field* field;
@@ -41,7 +43,8 @@ private:
 
 
 
-    std::vector<Enemy<MoveRandom, InteractionATK>*> enemies;
+    std::vector<Enemy<MoveRandom, InteractionATK>*> enemies_random;
+    std::vector<Enemy<MoveDirect, InteractionTolk>*> enemies_direct;
    
 };
 

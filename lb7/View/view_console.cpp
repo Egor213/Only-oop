@@ -71,7 +71,8 @@ void ViewConsole::viewManage()
 
 void ViewConsole::viewField()
 {
-    std::vector<Enemy<MoveRandom, InteractionATK> *> temp = game->create->getEnemies();
+    std::vector<Enemy<MoveRandom, InteractionATK> *> temp1 = game->create->getRandomEnemies();
+    std::vector<Enemy<MoveDirect, InteractionTolk> *> temp2 = game->create->getDirectEnemies();
     for (int i = game->field->getHeight() - 1; i >= 0; i--)
     {
         for (int j = 0; j < game->field->getWidth(); j++)
@@ -81,10 +82,14 @@ void ViewConsole::viewField()
                 std::cout << '*';
             else
             {
-                for (auto per : temp)
+                for (auto per : temp1)
+                {
+                for (auto per2 : temp2)
                 {
                 if (game->controller->getPosition().x == j && game->controller->getPosition().y == i)
                     std::cout << '@';
+                else if (per2->getCoords().x == j && per2->getCoords().y == i)
+                    std::cout << "T";
                 else if (per->getCoords().x == j && per->getCoords().y == i)
                     std::cout << "R";
                 else if (game->field->getExit().x == j && game->field->getExit().y == i)
@@ -95,6 +100,7 @@ void ViewConsole::viewField()
                     std::cout << getCharEvent(game->field->getCell(j, i).getEvent());
                 else
                     std::cout << ' ';
+                }
                 }
             }
         }

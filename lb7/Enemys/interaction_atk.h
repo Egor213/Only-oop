@@ -9,7 +9,7 @@ public:
     template <typename EnemyType>
     void interaction(EnemyType *enemy)
     {
-        std::cout << "АТАКА\n";
+        enemy->attack();
     }
 };
 

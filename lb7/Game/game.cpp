@@ -119,11 +119,14 @@ void Game::stepCommand()
         break;
     default:
         controller->step(it);
-        for (auto per : create->getEnemies())
+        for (auto per1 : create->getRandomEnemies())
         {
-            per->move();
-            per->interaction();
-        }       
+            per1->move();
+        } 
+        for (auto per2 : create->getDirectEnemies())
+        {
+            per2->move();
+        }        
         notify(ViewEvent::ChangeCoords);
         notifyLog(LogEvent::DOCOMMAND);
         isEnd();
