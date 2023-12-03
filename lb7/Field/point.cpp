@@ -12,4 +12,11 @@ bool Point::operator==(const Point& other) const {
     return false;
 }
 
+Point& Point::operator+=(const Point& other)
+{
+    x += other.x;
+    y += other.y;
+    return *this;
+}
+
 #endif

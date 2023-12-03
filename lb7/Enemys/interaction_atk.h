@@ -5,9 +5,11 @@
 class InteractionATK
 {
 public:
-    void interaction()
+
+    template <typename EnemyType>
+    void interaction(EnemyType *enemy)
     {
-        std::cout << "HELLO\n";
+        enemy->attack();
     }
 };
 

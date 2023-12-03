@@ -2,21 +2,21 @@
 #define game_cpp
 #include "game.h"
 
-Game::Game(unsigned hp, unsigned atk) : hp(hp), atk(atk), level(3), field(nullptr), controller(nullptr), hero(nullptr), manage(nullptr), game_flag(true){
+Game::Game(unsigned hp, unsigned atk) : hp(hp), atk(atk), level(3), field(nullptr), controller(nullptr), hero(nullptr), manage(nullptr), game_flag(true)
+{
     log_tracker = new LogTracker(this);
 }
 
 Game::~Game()
 {
     cleanPtr();
-    
 }
 
 void Game::run()
 {
     initGame();
     while (game_flag)
-    {   
+    {
         stepCommand();
     }
 }
@@ -29,7 +29,7 @@ void Game::getLvl()
     checkCin(level);
 }
 
-void Game::checkCin(unsigned& temp)
+void Game::checkCin(unsigned &temp)
 {
     if (std::cin.fail())
     {
@@ -47,16 +47,15 @@ void Game::setManage(Management *manage)
 void Game::initGame()
 {
     getLvl();
-    
+
     this->hero = new Hero(hp, atk);
     this->create = new GenField(level);
     this->field = create->getField();
     this->controller = new Controller(*hero, *field);
     create->generateEvents(*controller);
     controller->setPosition(field->getStart().x, field->getStart().y);
-    
-    create->generateEnemies();
-    
+
+    create->generateEnemies(controller);
 
     notify(ViewEvent::InitGame);
     notifyLog(LogEvent::NEWGAME);
@@ -79,7 +78,7 @@ void Game::isEnd()
             notifyLog(LogEvent::WIN);
         else
             notifyLog(LogEvent::LOSE);
-        
+
         unsigned temp = 0;
         std::cin >> temp;
         checkCin(temp);
@@ -90,7 +89,6 @@ void Game::isEnd()
             cleanPtr();
             initGame();
         }
-        
     }
 }
 
@@ -98,8 +96,6 @@ Command Game::getLastCommand()
 {
     return last_command;
 }
-
-
 
 void Game::stepCommand()
 {
@@ -123,11 +119,14 @@ void Game::stepCommand()
         break;
     default:
         controller->step(it);
-        create->getEnemies()[0]->move();
+        for (auto per : create->getEnemies())
+        {
+            per->move();
+        }       
         notify(ViewEvent::ChangeCoords);
         notifyLog(LogEvent::DOCOMMAND);
         isEnd();
-        create->getEnemies()[0]->move();
+
         break;
     }
 }
@@ -138,33 +137,31 @@ void Game::finishGame()
     game_flag = false;
 }
 
-void Game::addObserver(Observer* apObserver)
+void Game::addObserver(Observer *apObserver)
 {
     observers.push_back(apObserver);
 }
 
-void Game::addLogObserver(IMessage* aObserver)
+void Game::addLogObserver(IMessage *aObserver)
 {
     logs_observers.push_back(aObserver);
 }
 
-void Game::removeObserver(Observer* observer)
+void Game::removeObserver(Observer *observer)
 {
     observers.erase(std::remove(observers.begin(), observers.end(), observer), observers.end());
 }
 
 void Game::notify(ViewEvent view_event)
 {
-    for (Observer* observer : observers)
+    for (Observer *observer : observers)
         observer->update(view_event);
 }
 
 void Game::notifyLog(LogEvent event)
 {
-    for (IMessage* log_observer : logs_observers)
+    for (IMessage *log_observer : logs_observers)
         log_observer->update(event);
 }
-
-
 
 #endif

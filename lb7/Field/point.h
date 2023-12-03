@@ -8,6 +8,7 @@ public:
     unsigned y;
     Point(unsigned x = 0, unsigned y = 0);
     bool operator==(const Point& other) const;
+    Point& operator+=(const Point& other);
 };
 
 #endif

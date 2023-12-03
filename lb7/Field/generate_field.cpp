@@ -145,10 +145,10 @@ void GenField::placeEventLv2(Controller &controller)
 
 
 
-void GenField::generateEnemies()
+void GenField::generateEnemies(Controller* controller)
 {
-    enemies.push_back(new Enemy<MoveRandom, InteractionATK>(field));
-    enemies[0]->setCoords(1,1);
+    enemies.push_back(new Enemy<MoveRandom, InteractionATK>(field, controller));
+    enemies[0]->setCoords(1,2);
 }
 
 std::vector<Enemy<MoveRandom, InteractionATK>*> GenField::getEnemies()

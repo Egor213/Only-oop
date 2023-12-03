@@ -6,7 +6,7 @@ TeleportEvent::TeleportEvent(Controller &controller) : controller(controller) {}
 
 void TeleportEvent::event()
 {
-     std::srand(std::time(0));
+    std::srand(std::time(0));
     int x = 0;
     int y = 0;
     while (true)

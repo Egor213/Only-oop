@@ -21,7 +21,7 @@ public:
     GenField(unsigned level);
     ~GenField();
     void generateEvents(Controller& controller);
-    void generateEnemies();
+    void generateEnemies(Controller* controller);
     Field* getField();
 
     std::vector<Enemy<MoveRandom, InteractionATK>*> getEnemies();
