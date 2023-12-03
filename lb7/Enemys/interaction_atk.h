@@ -9,7 +9,8 @@ public:
     template <typename EnemyType>
     void interaction(EnemyType *enemy)
     {
-        enemy->attack();
+        Controller* temp = enemy->getPlayerController();
+        temp->addStat(HP, -2);
     }
 };
 

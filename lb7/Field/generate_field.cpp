@@ -47,6 +47,10 @@ Field *GenField::getField()
 GenField::~GenField()
 {
     delete field;
+    for (auto per : enemies_random)
+        delete per;
+    for (auto per2 : enemies_direct)
+        delete per2; 
 }
 
 std::vector<std::string> GenField::parseFile(const std::string &file_name)
