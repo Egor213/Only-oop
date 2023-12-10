@@ -1,0 +1,33 @@
+Log: 0# Height: 19 Width: 20 StartX: 14 StartY: 18
+Log: 1# Key: s Command: MoveDown
+Log: 2# Key: s Command: MoveDown
+Log: 3# Key: s Command: MoveDown
+Log: 4# Key: a Command: MoveLeft
+Log: 5# Key: a Command: MoveLeft
+Log: 6# Key: a Command: MoveLeft
+Log: 7# Key: s Command: MoveDown
+Log: 8# Key: s Command: MoveDown
+Log: 9# Key: d Command: MoveRight
+Log: 10# Key: d Command: MoveRight
+Log: 11# Key: s Command: MoveDown
+Log: 12# Key: d Command: MoveRight
+Log: 13# Key: d Command: MoveRight
+Log: 14# Key: w Command: MoveUp
+Log: 15# Key: w Command: MoveUp
+Log: 16# Key: d Command: MoveRight
+Log: 17# Key: d Command: MoveRight
+Log: 18# Key: d Command: MoveRight
+Log: 19# Key: d Command: MoveRight
+Log: 20# Key: w Command: MoveUp
+Log: 21# Key: w Command: MoveUp
+Log: 22# Key: s Command: MoveDown
+Log: 23# Key: s Command: MoveDown
+Log: 24# Key: d Command: MoveRight
+Log: 25# Key: s Command: MoveDown
+Log: 26# Key: s Command: MoveDown
+Log: 27# Key: s Command: MoveDown
+Log: 28# Key: a Command: MoveLeft
+Log: 29# Key: a Command: MoveLeft
+Log: 30# Key: w Command: MoveUp
+Log: 31# Key: a Command: MoveLeft
+Log: 32# HP: 10 ATK: 2 EXP: 0
