@@ -1,0 +1,9 @@
+Log: 0# Time: 19:57:45 Height: 19 Width: 20 StartX: 14 StartY: 18 
+Log: 1# Time: 19:57:46 Key: s Command: MoveDown 
+Log: 2# Time: 19:57:46 Key: s Command: MoveDown 
+Log: 3# Time: 19:57:46 Key: s Command: MoveDown 
+Log: 4# Time: 19:57:46 Key: a Command: MoveLeft 
+Log: 5# Time: 19:57:47 Key: a Command: MoveLeft 
+Log: 6# Time: 19:57:47 Key: a Command: MoveLeft 
+Log: 7# Time: 19:57:47 Key: [ 
+Log: 8# Time: 19:57:48 Key: p Command: Quit 
