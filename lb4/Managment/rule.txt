@@ -1,0 +1,6 @@
+MoveLeft: a
+MoveRight: d
+MoveUp: w
+MoveDown: s
+Quit: p
+Restart: o
