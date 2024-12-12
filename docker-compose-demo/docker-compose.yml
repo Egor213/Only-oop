@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  postgres_db:
+    image: postgres:17-alpine
+    container_name: postgres_db
+    environment:
+      POSTGRES_DB: "prediction"
+      POSTGRES_USER: "prediction"
+      POSTGRES_PASSWORD: "prediction"
+    ports:
+      - "5432:5432" 
